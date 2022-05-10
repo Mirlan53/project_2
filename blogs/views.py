@@ -9,9 +9,9 @@ def blog_list(request):
 	return render(request, 'blogs/blog_list.html', context)
 
 
-def book(request):
-	blogs = Blog.objects.all() # Запрашиваем из БД все блоги
+def book_list(request):
+	books = Book.objects.all() # Запрашиваем из БД все блоги
 	context = {
-		'blogs': blogs,
+		'books': books,
 	}
-	return render(request, 'blogs/book.html', context)
+	return render(request, 'blogs/book_list.html', context)

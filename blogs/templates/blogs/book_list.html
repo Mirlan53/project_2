@@ -1,0 +1,16 @@
+{% extends "blogs/_base.html" %}
+
+
+{% load static %}
+
+
+{% block title %}Мой первый блог | Мой первый сайт{% endblock title %}
+{% block content %}
+
+{% for b in books %}
+	<img src="{{b.cover.url}}" class="book">
+	<p>{{b.title}}</p>
+	<hr>
+{% endfor %}
+
+{% endblock content %}

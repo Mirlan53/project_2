@@ -1,4 +1,8 @@
 from django.db import models
+from django.conf import settings
+
+def book_cover_directory(instance, filename):
+	return f"{settings.MEDIA_ROOT}covers/{instance.id}/{filename}"
 
 class Blog(models.Model):
 	title = models.CharField(max_length=200)
