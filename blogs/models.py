@@ -7,3 +7,19 @@ class Blog(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
+
+class Book(models.Model):
+	title = models.CharField(max_length=200, unique=True)
+	description = models.TextField()
+	release_date = models.DateField(auto_now_add=True)
+	number_of_pages = models.PositiveIntegerField(null=True, blank=True)
+	price = models.DecimalField(decimal_places=2, max_digits=6)
+	# in_stock - есть ли на складе 
+	in_stock = models.BooleanField(default=True)
+	# cover обложка
+	cover = models.ImageField(upload_to='covers')
+
+	def __str__(self):
+		return self.title
