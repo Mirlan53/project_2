@@ -1,0 +1,23 @@
+{% extends "blogs/_base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} Мои блоги | {{book.title}}{% endblock title %}
+{% block content %}
+
+<h3>{{book.title}}</h3>
+<img src="{{book.cover.url}}">
+{# <p>{{book.description}}</p> #}
+
+
+<div class="row mt-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="{% url 'book_list' %}">Вернуться к списку книг</a></li>
+        </ul>
+    </nav>
+</div>
+
+{% endblock content %}

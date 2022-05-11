@@ -6,11 +6,13 @@
 
 {% block title %} блог | сайт{% endblock title %}
 {% block content %}
-
-{% for b in blogs %}
-	<h3>{{b.title}}</h3>
-	<p>{{b.text}}</p>
-	<hr>
-{% endfor %}
+<div class="row">
+	
+	{% for b in blogs %}
+		<h3>{{b.title}}</h3>
+		<p>{{b.text}}</p>
+		<hr>
+	{% endfor %}
+</div>
 
 {% endblock content %}

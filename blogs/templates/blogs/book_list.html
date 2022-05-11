@@ -4,13 +4,19 @@
 {% load static %}
 
 
-{% block title %}Мой первый блог | Мой первый сайт{% endblock title %}
+{% block title %}Мой первый блог | Наш магазин книг{% endblock title %}
 {% block content %}
 
-{% for b in books %}
-	<img src="{{b.cover.url}}" class="book">
-	<p>{{b.title}}</p>
-	<hr>
-{% endfor %}
-
+<h3>{{book.title}}</h3>
+<img src="{{book.cover.url}}">
+<p>{{book.description}}</p>
+<ul>
+	{% for b in books %}
+	<li>
+		<a href="{% url "book_detail" b.id %}">	
+		{{b.title}}
+		</a>
+	</li>
+	{% endfor %}
+</ul>
 {% endblock content %}
