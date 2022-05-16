@@ -1,0 +1,18 @@
+{% extends "blogs/_base.html" %}
+
+
+{% load static %}
+
+
+{% block title %} блог | сайт{% endblock title %}
+{% block content %}
+<div class="row">
+	
+	{% for b in blog %}
+		<h3>{{b.title}}</h3>
+		<p>{{b.text}}</p>
+		<hr>
+	{% endfor %}
+</div>
+
+{% endblock content %}
