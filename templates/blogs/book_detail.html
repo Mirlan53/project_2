@@ -1,15 +1,14 @@
-{% extends "blogs/_base.html" %}
+{% extends "_base.html" %}
 
 
 {% load static %}
 
 
-{% block title %} Мои блоги | {{book.title}}{% endblock title %}
+{% block title %} О книжках  {{book.title}}{% endblock title %}
 {% block content %}
 
 <h3>{{book.title}}</h3>
 <img src="{{book.cover.url}}">
-{# <p>{{book.description}}</p> #}
 
 
 <div class="row mt-3">
