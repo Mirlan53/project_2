@@ -1,0 +1,21 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="mt-4 text-center">
+	<form action="" method="POST">
+		<span>
+			Вы действительно хотите удалить {{student.name}}
+		</span>
+		{% csrf_token %}
+		<button type="sumbit" class="btn btn-danger">Да</button>
+		<a href="{% url 'student_list' %}"
+		class="btn btn-success">
+		Нет	
+		</a>
+	</form>
+</div>
+
+
+{% endblock content %}
