@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %} | {{book.title}}{% endblock title %}
+{% block content %}
+
+<div class="row mt-4">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Имя</th>
+	      <th scope="col">Фамилия</th>
+	      <th scope="col">Учитель</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for s in students %}
+	    <tr>
+	      <th scope="row">{{s.id}}</th>
+	      <td>
+	      	<a href="{% url 'student_detail' s.id %}">
+	      	{{s.name}}
+	      	</a>
+	      </td>	
+	      <td>{{s.surname}}</td>
+	      <td>{{s.teacher}}</td>
+	    </tr>
+	
+	    {% endfor %}
+	  </tbody>
+	</table>
+</div>
+
+{% endblock content %}

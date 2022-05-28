@@ -59,9 +59,23 @@ def student_delete(request, student_id):
 	# Берем ученика из БД
 	if request.method == 'POST':
 		student.delete()
-		return redirect('student_list')
+		return redirect(student_list)
 
 	context = {
 		'student': student
 	}
 	return render(request, 'students/student_delete.html', context)
+
+
+def student_teacher(request, teacher_id):
+	teacher = Teacher.objects.get(id = teacher.id)
+	students = Student.objects.filter(teacher = teacher)
+	if request.method == 'POST':
+		if form.is_valid:
+			form.save()
+			return redirect(student_list)
+
+	context = {
+			'form': form
+			}
+	return render(request, 'students/student_teacher.html', context)
