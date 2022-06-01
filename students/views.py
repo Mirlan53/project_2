@@ -18,11 +18,11 @@ def student_detail(request, student_id):
 	return render(request, 'students/student_detail.html', context)
 
 def student_create(request):
-	form = StudentForm(request.POST or None)
+	form = StudentForm(request.POST or None, files=request.FILES)
 	if request.method == 'POST':
 		if form.is_valid:
 			form.save()
-			return redirect(student_list)
+			return redirect('student_list')
 
 	context = {
 	'form': form
@@ -67,15 +67,12 @@ def student_delete(request, student_id):
 	return render(request, 'students/student_delete.html', context)
 
 
-def student_teacher(request, teacher_id):
-	teacher = Teacher.objects.get(id = teacher.id)
-	students = Student.objects.filter(teacher = teacher)
-	if request.method == 'POST':
-		if form.is_valid:
-			form.save()
-			return redirect(student_list)
-
+def teachers_students(request, teacher_id):
+	students = Student.objects.filter(teacher_id = teacher_id)
+	teachers = Teacher.objects.all()
 	context = {
-			'form': form
-			}
-	return render(request, 'students/student_teacher.html', context)
+			'students': students,
+			'teachers': teacher
+	}
+
+	return render(request, 'students/student_list.html', context)

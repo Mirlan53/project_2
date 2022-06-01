@@ -16,7 +16,7 @@ class Student(models.Model):
 	grade = models.IntegerField()
 	average_mark = models.DecimalField(max_digits=2, decimal_places=1)
 	photo = models.ImageField(upload_to='student_photos', null=True, blank=True)
-	teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
+	teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True, related_name='student')
 
 	def __str__(self):
 			return f"{self.name}: {self.grade}"

@@ -1,18 +1,46 @@
 {% extends "_base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 
-<div class="col-8 mt-4">
-	<form action="" method="POST">
+<h1>Добавление ученика</h1>
+{% if form.errors %}
+	{% for field in form %}
+		{% for err in field.errors %}
+		<div class="alert alert-danger" role="alert">
+			{{err|escape}}
+		</div>
+		{% endfor %}
+	{% endfor %}
+{% endif %}
+<div class="col-md-5">
+	<form action="" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form.as_p }}
-		<button 
+		<label for="id_name">Введите имя:</label>
+		{% render_field form.name class="form-control" placeholder="Имя" %}
+		<label for="id_surname">Введите фамилию:</label>
+		{% render_field form.surname class="form-control" placeholder="Фамилия" %}
+		<label for="id_birth_date">Дата рождения</label>
+		{% render_field form.birth_date class="form-control" placeholder="Дата рождения" %}
+		<label for="id_school">Школа</label>
+		{% render_field form.school class="form-control" placeholder="Школа" %}
+		<label for="id_grade">Класс</label>
+		{% render_field form.grade class="form-control" placeholder="Класс" %}
+		<label for="id_average_mark">Средняя оценка</label>
+		{% render_field form.average_mark class="form-control" placeholder="Средняя оценка" %}
+		<label for="id_photo">Добавить фото:</label>
+		{% render_field form.photo class="form-control" onchange="showPreview(evemt)" %}
+		<div class="photo-preview">
+			<img src="" alt="" id="file-preview">
+		</div>
+		{% if form.photo.errors %}
+		<label for="id_teacher">Учитель</label>
+		{% render_field form.teacher class="form-control" placeholder="Учитель" %}
+		<button
 			type="sumbit"
-			class="btn btn-success">
-			Создать
+			class="btn btn-success mt-3">Добавить
 		</button>
 	</form>
 </div>
-
 {% endblock content %}
