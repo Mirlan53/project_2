@@ -18,8 +18,9 @@ def student_detail(request, student_id):
 	return render(request, 'students/student_detail.html', context)
 
 def student_create(request):
-	form = StudentForm(request.POST or None, files=request.FILES)
+	form = StudentForm()
 	if request.method == 'POST':
+		form = StudentForm(request.POST, files=request.FILES)
 		if form.is_valid:
 			form.save()
 			return redirect('student_list')

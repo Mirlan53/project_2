@@ -7,7 +7,7 @@ class StudentForm(forms.ModelForm):
 		model = Student
 		# fields = '__all__'
 		fields = (
-			'name', 'surname', 'birth_date', 'school', 'grade', 'average_mark'
+			'name', 'surname', 'birth_date', 'school', 'grade', 'average_mark', 'photo'
 		)
 
 class TeacherForm(forms.ModelForm):

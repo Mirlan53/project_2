@@ -5,38 +5,100 @@
 {% block content %}
 
 <h1>Добавление ученика</h1>
-{% if form.errors %}
-	{% for field in form %}
-		{% for err in field.errors %}
-		<div class="alert alert-danger" role="alert">
-			{{err|escape}}
-		</div>
-		{% endfor %}
-	{% endfor %}
-{% endif %}
 <div class="col-md-5">
 	<form action="" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		<label for="id_name">Введите имя:</label>
 		{% render_field form.name class="form-control" placeholder="Имя" %}
+		{% if form.name.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.name.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_surname">Введите фамилию:</label>
 		{% render_field form.surname class="form-control" placeholder="Фамилия" %}
+		{% if form.surname.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.surname.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_birth_date">Дата рождения</label>
 		{% render_field form.birth_date class="form-control" placeholder="Дата рождения" %}
+		{% if form.birth_date.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.birth_date.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_school">Школа</label>
 		{% render_field form.school class="form-control" placeholder="Школа" %}
+		{% if form.school.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.school.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_grade">Класс</label>
 		{% render_field form.grade class="form-control" placeholder="Класс" %}
+		{% if form.grade.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.grade.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_average_mark">Средняя оценка</label>
 		{% render_field form.average_mark class="form-control" placeholder="Средняя оценка" %}
+		{% if form.average_mark.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.average_mark.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_photo">Добавить фото:</label>
-		{% render_field form.photo class="form-control" onchange="showPreview(evemt)" %}
+		{% render_field form.photo class="form-control" onchange="showPreview(event)" %}
 		<div class="photo-preview">
 			<img src="" alt="" id="file-preview">
 		</div>
 		{% if form.photo.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.photo.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<label for="id_teacher">Учитель</label>
 		{% render_field form.teacher class="form-control" placeholder="Учитель" %}
+		{% if form.teacher.errors %}
+			<div class="alert alert-danger mt-2" role="alert">
+				<ul>
+					<li>
+						{{form.teacher.errors|striptags}}
+					</li>
+				</ul>
+			</div>
+		{% endif %}
 		<button
 			type="sumbit"
 			class="btn btn-success mt-3">Добавить
