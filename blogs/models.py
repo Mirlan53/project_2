@@ -4,10 +4,19 @@ from django.conf import settings
 def book_cover_directory(instance, filename):
 	return f"{settings.MEDIA_ROOT}covers/{instance.id}/{filename}"
 
+TEXT_CAT = 'tb'
+MUSIC_CAT = 'mb'
+CAT_CHOICES = (
+	(TEXT_CAT, 'Текстовый блог'),
+	(MUSIC_CAT, 'Музыкальный блог')
+)
+
+
 class Blog(models.Model):
 	title = models.CharField(max_length=200)
 	text = models.TextField()
 	creation_date = models.DateField()
+	category = models.CharField(max_length=10, choices=CAT_CHOICES, default=TEXT_CAT)
 
 	def __str__(self):
 		return self.title

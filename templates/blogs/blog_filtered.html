@@ -1,0 +1,29 @@
+{% extends "_base.html" %}
+
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %} блог | сайт{% endblock title %}
+{% block content %}
+<div class="row">
+	{% for b in blogs %}
+		<h3>{{b.title}}</h3>
+		<p>{{b.text}}</p>
+		<hr>
+	{% endfor %}
+</div>
+<form action="" method="get">
+	<h4>Поиск</h4>
+	<label>По блогам</label>
+	{% render_field filter.form.category %}
+
+</form>
+
+<ul>
+	{% for b in filter.qs %}
+	<li>{{b.title}}</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}

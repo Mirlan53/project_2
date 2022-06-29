@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from blogs.views import blog_list, book_list, book_detail
+from blogs.views import blog_list, book_list, book_detail, blog_create, blog_filtered
 from django.conf import settings 
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blog_list, name='blog_list'),
+    path('blog_create', blog_create, name='blog_create'),
     path('books', book_list, name='book_list'),
+    path('blog_filtered', blog_filtered, name='blog_filtered'),
     path('books/<int:book_id>', book_detail, name='book_detail'),
     path('', include('students.urls')),
 ]
