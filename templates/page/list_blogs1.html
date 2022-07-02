@@ -1,0 +1,21 @@
+
+	{% for b in blogs %}
+	<li>{{b.title}}</li>
+	{% endfor %}
+
+<div id="pagination" hx-swap-oob="true">
+	<span class="step-links">
+		{% if blogs.has_previous %}
+		<button
+		  	hx-get="?page={{ blogs.previous_page_number }}"
+			hx-target="#blog-list">пред.</button>
+		{% endif %}
+		{% if blogs.has_next %}
+		<button 
+			hx-get="?page={{ blogs.next_page_number }}"
+			hx-target="#blog-list"
+			>следующая страница</button>
+		{% endif %}
+	</span>
+</div>
+

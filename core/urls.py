@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from blogs.views import blog_list, book_list, book_detail, blog_create, blog_filtered
+from blogs.views import blog_list, book_list, book_detail, blog_create, blog_filtered, list_blogs
 from django.conf import settings 
 from django.conf.urls.static import static
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('books', book_list, name='book_list'),
     path('blog_filtered', blog_filtered, name='blog_filtered'),
     path('books/<int:book_id>', book_detail, name='book_detail'),
+    path('list_blogs', list_blogs, name='list_blogs'),
     path('', include('students.urls')),
 ]
 if settings.DEBUG:

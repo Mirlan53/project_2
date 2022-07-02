@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Blog, Book
 from .forms import BlogForm
 from .filters import BlogFilter
-
+from django.core.paginator import Paginator
 
 def blog_list(request):
 	blogs = Blog.objects.all() # Запрашиваем из БД все блоги
@@ -43,3 +43,19 @@ def blog_filtered(request):
 		'filter': f,
 	}
 	return render(request, 'blogs/blog_filtered.html', context)
+
+def list_blogs(request):
+	blogs = Blog.objects.all()
+	page_num = request.GET.get('page')
+	paginator = Paginator(blogs, 5)
+	blogs = paginator.get_page(page_num)
+	context = {
+		'blogs': blogs
+	}
+	if page_num == 1 or page_num is None:
+		return render(request, 'page/list_blogs.html', context)
+	else:
+		return render(request, 'page/list_blogs1.html', context)
+	
+
+	return render(request, 'page/list_blogs.html', context)
